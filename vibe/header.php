@@ -21,6 +21,7 @@
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/posts/42">A post</a>
+        <a href="/box">Generics</a>
         <a href="/api/status">API</a>
     </nav>
     <hr>

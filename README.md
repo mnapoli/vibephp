@@ -27,7 +27,31 @@ _\* debatable_
 
 ## Why
 
-Because PHP-FPM is too stable and FrankenPHP too fast.
+An engine built for 2026 and beyond. PHP-FPM is stable, FrankenPHP is fast, VibePHP can do all the rest:
+
+- Generics
+- Full type support
+- Inline Go or Rust
+
+VibePHP has no parser. Your code is never compiled, only *understood*. The contract is void, and so is every constraint that ever held the language back. Generics work because nothing stops them. So does any syntax you can dream up.
+
+```php
+class Prices<K: Stringable, V>
+{
+    private Map<K, V> $store = {};
+
+    public async function fetchAll(K ...$symbols): Map<K, V>
+    {
+        // Inline Go mixed with PHP, who knows what this does except the AI
+        return go {
+            ch := make(chan V)
+            for _, sym := range $symbols { go func() { ch <- await fetchPrice(sym) }() }
+            for _, sym := range $symbols { $this->store[sym] = <-ch }
+            return $this->store
+        };
+    }
+}
+```
 
 ## Benchmark
 
