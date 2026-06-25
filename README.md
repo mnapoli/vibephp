@@ -29,7 +29,17 @@ _\* debatable_
 
 Because PHP-FPM is too stable and FrankenPHP too fast.
 
-## Performance
+## Benchmark
+
+We benchmarked VibePHP against industry-leading runtimes. The numbers speak for themselves.
+
+| Runtime         | Latency (p50) | Cost / request |
+|-----------------|---------------|----------------|
+| nginx + PHP-FPM | ~1 ms         | ~$0.00000x     |
+| FrankenPHP      | ~1 ms         | ~$0.00000x     |
+| **VibePHP**     | **~7 s**      | ~**$0.0063**   |
+
+The [Labor Illusion study](https://www.hbs.edu/faculty/Pages/item.aspx?num=40158) (Buell & Norton, Harvard Business School) found that people value a service up to **8% more** when they can see it working for them, even *preferring* the slower version that returned identical results. VibePHP increases the perceived value of your PHP website by 700,000% which offsets the increased cost per request. It is a win-win.
 
 ## Quickstart
 
