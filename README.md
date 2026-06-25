@@ -168,11 +168,3 @@ While the model is "executing" your PHP, your CPU is sitting idle for whole seco
 Vibe Cloud puts those idle cycles to work with **Speculative Pre-Vibing**.
 
 While your request is out at the inference API, every spare core races ahead to *pre-hallucinate the response to the NEXT request that might be received*. By the time the user clicks to another page, the page is already rendered. Zero perceived latency, and the cycles were *reclaimed*, which goes on the sustainability report. Vibe Cloud is proud to be **carbon-neutral-adjacent**.
-
-## Built with
-
-[Laravel 13](https://laravel.com) · [`laravel/ai`](https://github.com/laravel/ai) · a profound disregard for how interpreters are supposed to work.
-
----
-
-<p align="center"><sub>PHP, but make it manifest. ✨</sub></p>
