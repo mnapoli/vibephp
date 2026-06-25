@@ -27,10 +27,11 @@ _\* debatable_
 
 ## Why
 
-An engine built for 2026 and beyond. PHP-FPM is stable, FrankenPHP is fast, VibePHP can do all the rest:
+An engine built for 2026 and beyond. PHP-FPM is stable, FrankenPHP is fast, VibePHP brings all the rest:
 
+- Hype
 - Generics
-- Full type support
+- Async/await
 - Inline Go or Rust
 
 VibePHP has no parser. Your code is never compiled, only *understood*. The contract is void, and so is every constraint that ever held the language back. Generics work because nothing stops them. So does any syntax you can dream up.
