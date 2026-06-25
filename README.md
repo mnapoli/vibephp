@@ -1,6 +1,6 @@
 <h1 align="center">🌀 VibePHP</h1>
 
-<p align="center"><em>The PHP runtime for 2026</em></p>
+<p align="center"><em>PHP that runs on vibes, not code.</em></p>
 
 <p align="center">
 <code>No opcodes.</code> · <code>No Zend Engine.</code> · <code>Just vibes.</code>
@@ -118,6 +118,27 @@ The plumbing is tested for real (the AI is faked, the engine is not):
 ```bash
 php artisan test --filter=VibeEngineTest
 ```
+
+## ☁️ Vibe Cloud — coming soon
+
+Running VibePHP on your own machine is fine, but it's not web scale. Vibe Cloud is fully managed, serverless VibePHP hosting. Deploy with `vibe up` and focus on running your business.
+
+### Cloud Particles™
+
+Vibe Cloud doesn't bill you for servers, containers, or even functions. It bills you for **particles**.
+
+- **1 particle = 1 MB of memory.** Your app's footprint is measured to the megabyte, in real time.
+- **Particles autoscale per MB.** Allocate another array, spawn another particle. Free a string, the particle decays. You pay for exactly the memory you're using, sampled continuously, billed per particle-millisecond.
+- **Memory is quantized.** You cannot allocate half a megabyte. There is no `0.5` particle.
+- **Heisenberg Tier (Enterprise).** On our top tier, you can know either how much memory your app is using *or* how much it costs. Never both at once.
+
+### Idle Cycle Reclamation
+
+While the model is "executing" your PHP, your CPU is sitting idle for whole seconds, politely waiting on an inference API. That's billions of wasted cycles, per request, per particle.
+
+Vibe Cloud puts those idle cycles to work with **Speculative Pre-Vibing**.
+
+While your request is out at the inference API, every spare core races ahead to *pre-hallucinate the response to the NEXT request that might be received*. By the time the user clicks to another page, the page is already rendered. Zero perceived latency, and the cycles were *reclaimed*, which goes on the sustainability report. Vibe Cloud is proud to be **carbon-neutral-adjacent**.
 
 ## Built with
 
