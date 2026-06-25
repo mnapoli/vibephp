@@ -1,14 +1,6 @@
-<h1 align="center">🌀 VibePHP</h1>
-
-<p align="center"><em>PHP that runs on vibes, not code.</em></p>
-
-<p align="center">
-<code>No opcodes.</code> · <code>No Zend Engine.</code> · <code>Just vibes.</code>
-</p>
+![VibePHP](art.png)
 
 ---
-
-## What is this
 
 VibePHP is a new generation PHP runtime and web server that runs PHP faster* and better*.
 
