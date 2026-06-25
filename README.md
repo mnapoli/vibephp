@@ -29,14 +29,29 @@ _\* debatable_
 
 Because PHP-FPM is too stable and FrankenPHP too fast.
 
+## Performance
+
+## Quickstart
+
+- Set an `OPENAI_API_KEY` in `.env`
+- Create an `index.php` file in the `vibe/` directory:
+  ```php
+  <?php
+  echo "Hello, world! The time is " . date('H:i:s');
+  ```
+- Run `php artisan vibe`
+- Visit your PHP website at http://localhost:8000
+
 ## How it works
+
+VibePHP itself is implemented using PHP, Laravel, [`laravel/ai`](https://laravel.com/ai), and GPT/Claude.
 
 ```
    GET /posts/42
         │
         ▼
 ┌───────────────────┐     reads the file, doesn't run it
-│  VibeController   │ ───────────────────────────────────────┐
+│     Laravel       │ ───────────────────────────────────────┐
 │  routes URL→file  │                                        │
 └───────────────────┘                                        ▼
                                               ┌──────────────────────────────┐
@@ -53,20 +68,15 @@ Because PHP-FPM is too stable and FrankenPHP too fast.
 3. **The AI "executes" it.** It follows the control flow, fetches `include`/`require`d files on demand via the `ReadVibeFile` tool, and **improvises every missing piece** — DB rows, `date()`, `rand()`, API payloads — plausibly and with full commitment.
 4. **It returns `{ status, headers, body }`.** Laravel sends that back as a real HTTP response. `header('Location: …')` becomes a 302. `header('Content-Type: application/json')` is honored. The whole charade holds up.
 
-It's stateless across requests, so reloading the same page gives you different data every time. That's not a bug. That's the vibe.
+The core of the engine is implemented as a [Laravel AI agent](https://laravel.com/docs/13.x/ai-sdk#agents) in [`App\Ai\Agents\VibePhpRuntime`](app/Ai/Agents/VibePhpRuntime.php). It uses a [custom tool](app/Ai/Tools/ReadVibeFile.php) to read files from the `vibe/` directory on demand, so that includes and requires work as expected.
 
-## Quickstart
+## Demo
 
-```bash
-# 1. Point it at an OpenAI key (the engine needs a brain)
-export OPENAI_API_KEY=sk-...
-
-# 2. Boot the "interpreter"
-php artisan serve
-
-# 3. Visit the site that builds itself as you look at it
-open http://localhost:8000
-```
+- Clone this repo
+- Set an `OPENAI_API_KEY` in `.env`
+- Install the project with `composer run setup`
+- Start the server with `php artisan vibe`
+- Visit http://localhost:8000
 
 Then wander around:
 
@@ -103,21 +113,6 @@ echo json_encode(['city' => $city, 'temp_c' => $temp]);
 | `model` | `VIBE_MODEL` | provider default | Which brain interprets your code |
 
 The provider (OpenAI) is set on the `App\Ai\Agents\VibePhpRuntime` agent via `laravel/ai`.
-
-## Caveats (the vibe has a cost)
-
-- **Every request is an LLM call.** It's slow and it costs money. This is the price of vibes.
-- **There is no correctness guarantee.** There is, in fact, an anti-guarantee.
-- **Do not put this in production.** Or do. We're not your boss. But don't.
-- **State does not persist.** Each request is a fresh hallucination from a blank mind.
-
-## Tests
-
-The plumbing is tested for real (the AI is faked, the engine is not):
-
-```bash
-php artisan test --filter=VibeEngineTest
-```
 
 ## ☁️ Vibe Cloud — coming soon
 
