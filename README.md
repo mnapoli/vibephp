@@ -2,7 +2,7 @@
 
 ---
 
-VibePHP is a new generation PHP runtime and web server that runs PHP faster* and better*.
+VibePHP is a next-generation PHP runtime and web server that runs PHP faster* and better*.
 
 There is no interpreter. There is no compiler. When a request comes in, your PHP source is handed to an AI that reads it, runs it **in its head**, makes up whatever it needs to (the database, the clock, the network, the truth), and hands back the HTTP response it reckons the code *would* have produced.
 
