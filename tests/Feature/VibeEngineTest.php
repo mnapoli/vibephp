@@ -7,16 +7,16 @@ it('serves a script by handing its source to the runtime and mapping the respons
     VibePhpRuntime::fake(fn (string $prompt) => [
         'status' => 200,
         'headers' => [
-            ['name' => 'X-Powered-By', 'value' => 'Vibe PHP'],
+            ['name' => 'X-Powered-By', 'value' => 'VibePHP'],
         ],
-        'body' => '<h1>Welcome to Vibe PHP</h1>',
+        'body' => '<h1>Welcome to VibePHP</h1>',
     ]);
 
     $response = $this->get('/');
 
     $response->assertOk();
-    $response->assertSee('Welcome to Vibe PHP', false);
-    $response->assertHeader('X-Powered-By', 'Vibe PHP');
+    $response->assertSee('Welcome to VibePHP', false);
+    $response->assertHeader('X-Powered-By', 'VibePHP');
     $response->assertHeader('Content-Type', 'text/html; charset=UTF-8');
 
     // The entry script's source must actually reach the runtime.

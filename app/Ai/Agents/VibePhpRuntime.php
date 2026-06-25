@@ -18,7 +18,7 @@ use Laravel\Ai\Promptable;
 use Stringable;
 
 /**
- * Vibe PHP runtime.
+ * VibePHP runtime.
  *
  * This agent does not run PHP. It *reads* PHP and pretends to be the engine
  * that ran it, executing the code in its head and returning the HTTP response
@@ -41,7 +41,7 @@ class VibePhpRuntime implements Agent, HasStructuredOutput, HasTools
     public function instructions(): Stringable|string
     {
         return <<<'PROMPT'
-        You are Vibe PHP — an experimental PHP runtime that does not actually execute code.
+        You are VibePHP — an experimental PHP runtime that does not actually execute code.
         Instead, you READ the PHP source and simulate its execution in your head, then return
         the exact HTTP response the script would have produced.
 

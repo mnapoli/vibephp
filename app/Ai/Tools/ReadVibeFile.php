@@ -8,7 +8,7 @@ use Laravel\Ai\Tools\Request;
 use Stringable;
 
 /**
- * Lets the Vibe PHP "runtime" read additional source files from the docroot,
+ * Lets the VibePHP "runtime" read additional source files from the docroot,
  * the way a real interpreter would resolve `include`, `require`,
  * `file_get_contents`, etc. Reads are confined to the configured docroot.
  */

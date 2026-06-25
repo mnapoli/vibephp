@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?= htmlspecialchars($pageTitle ?? 'Vibe PHP') ?></title>
+    <title><?= htmlspecialchars($pageTitle ?? 'VibePHP') ?></title>
     <style>
         body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 42rem; margin: 4rem auto; padding: 0 1rem; line-height: 1.6; color: #1a1a1a; }
         nav a { margin-right: 1rem; }

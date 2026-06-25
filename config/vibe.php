@@ -4,10 +4,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Vibe PHP Docroot
+    | VibePHP Docroot
     |--------------------------------------------------------------------------
     |
-    | The directory containing the PHP scripts that the Vibe PHP "runtime" will
+    | The directory containing the PHP scripts that the VibePHP "runtime" will
     | read and (creatively) interpret. Think of it as the document root of an
     | old-school PHP site: drop an index.php in here and visit the app.
     |

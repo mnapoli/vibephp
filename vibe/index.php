@@ -1,6 +1,6 @@
 <?php
 /**
- * Front controller for the Vibe PHP demo site.
+ * Front controller for the VibePHP demo site.
  *
  * None of this code is ever really executed: the Vibe runtime reads it and
  * imagines the result. The "database" below has no rows and PDO never connects
@@ -42,14 +42,14 @@ if (preg_match('#^/posts/(\d+)$#', $path, $matches)) {
 }
 
 // Home page: list the latest posts.
-$pageTitle = 'Vibe PHP — Home';
+$pageTitle = 'VibePHP — Home';
 require __DIR__.'/header.php';
 
 $posts = $db->query('SELECT id, title, excerpt, published_at FROM posts ORDER BY published_at DESC LIMIT 5')
     ->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<h1>Welcome to Vibe PHP</h1>
+<h1>Welcome to VibePHP</h1>
 <p>This page was "executed" by an AI that read the source and made up the data.</p>
 
 <h2>Latest posts</h2>
