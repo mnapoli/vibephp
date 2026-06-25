@@ -3,27 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Ai\Agents\VibePhpRuntime;
+use App\Ai\VibeLogger;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class VibeController extends Controller
 {
+    public function __construct(protected VibeLogger $logger) {}
+
     /**
      * Serve any incoming request by handing the matching PHP script to the
-     * Vibe PHP runtime and returning the HTTP response it "produces".
+     * VibePHP runtime and returning the HTTP response it "produces".
      */
     public function __invoke(Request $request): Response
     {
+        $method = $request->method();
+        $path = '/'.ltrim($request->path(), '/');
         $script = $this->resolveScript($request->path());
 
         if ($script === null) {
-            return response('Vibe PHP: No script found for this URL, and no index.php to route it.', 404);
+            $this->logger->start($method, $path, 'no script');
+            $this->logger->done($method, $path, 404, 0.0);
+
+            return response('VibePHP: No script found for this URL, and no index.php to route it.', 404);
         }
+
+        $this->logger->start($method, $path, $script);
+
+        $start = hrtime(true);
 
         $result = (new VibePhpRuntime)->prompt(
             $this->buildPrompt($request, $script),
             model: config('vibe.model'),
         );
+
+        $seconds = (hrtime(true) - $start) / 1e9;
+
+        $this->logger->done($method, $path, $result['status'], $seconds, $result->usage, $result->meta);
 
         return $this->toHttpResponse($result['status'], $result['headers'], $result['body']);
     }
